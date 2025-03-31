@@ -1,4 +1,4 @@
-# Public Subnets 
+# WEB SERVER Public Subnets - 1
 resource "aws_subnet" "swiggy-pub-sub-1" {
   vpc_id                  = aws_vpc.swiggy-vpc.id
   cidr_block              = "10.0.0.0/28"
@@ -10,6 +10,7 @@ resource "aws_subnet" "swiggy-pub-sub-1" {
   }
 }
 
+#WEB SERVER Public Subnets - 2
 resource "aws_subnet" "swiggy-pub-sub-2" {
   vpc_id                  = aws_vpc.swiggy-vpc.id
   cidr_block              = "10.0.0.16/28"
@@ -21,7 +22,7 @@ resource "aws_subnet" "swiggy-pub-sub-2" {
 }
 
 
-# Private Subnets
+# APP SERVER Private Subnets - 1
 resource "aws_subnet" "swiggy-pvt-sub-1" {
   vpc_id                  = aws_vpc.swiggy-vpc.id
   cidr_block              = "10.0.0.32/28"
@@ -31,6 +32,9 @@ resource "aws_subnet" "swiggy-pvt-sub-1" {
     Name = "swiggy-pvt-sub-1"
   }
 }
+
+# APP SERVER Private Subnets - 2
+
 resource "aws_subnet" "swiggy-pvt-sub-2" {
   vpc_id                  = aws_vpc.swiggy-vpc.id
   cidr_block              = "10.0.0.48/28"
@@ -41,6 +45,8 @@ resource "aws_subnet" "swiggy-pvt-sub-2" {
   }
 }
 
+# DB SERVER Private Subnets - 1
+
 resource "aws_subnet" "swiggy-pvt-sub-3" {
   vpc_id                  = aws_vpc.swiggy-vpc.id
   cidr_block              = "10.0.0.64/28"
@@ -50,6 +56,9 @@ resource "aws_subnet" "swiggy-pvt-sub-3" {
     Name = "swiggy-pvt-sub-3"
   }
 }
+
+# DB SERVER Private Subnets - 2
+
 resource "aws_subnet" "swiggy-pvt-sub-4" {
   vpc_id                  = aws_vpc.swiggy-vpc.id
   cidr_block              = "10.0.0.80/28"
