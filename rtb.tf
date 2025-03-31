@@ -1,4 +1,4 @@
-# Create a Route Table
+# Create a Route Table for web-subnets 
 resource "aws_route_table" "swiggy-web-rt" {
   vpc_id = aws_vpc.swiggy-vpc.id
   tags = {
@@ -9,6 +9,8 @@ resource "aws_route_table" "swiggy-web-rt" {
     gateway_id = aws_internet_gateway.swiggy-igw.id
   }
 }
+
+# Create a Route Table for App-subnets 
 
 resource "aws_route_table" "swiggy-app-rt" {
   vpc_id = aws_vpc.swiggy-vpc.id
@@ -21,30 +23,37 @@ resource "aws_route_table" "swiggy-app-rt" {
   }
 }
 
-# Route Table Association
+# Route Table Association of Web-subnet-1
 resource "aws_route_table_association" "swiggy-rt-as-1" {
   subnet_id      = aws_subnet.swiggy-pub-sub-1.id
   route_table_id = aws_route_table.swiggy-web-rt.id
 }
 
+# Route Table Association of Web-subnet-2
 resource "aws_route_table_association" "swiggy-rt-as-2" {
   subnet_id      = aws_subnet.swiggy-pub-sub-2.id
   route_table_id = aws_route_table.swiggy-web-rt.id
 }
 
+# Route Table Association of App-subnet-1
 resource "aws_route_table_association" "swiggy-rt-as-3" {
   subnet_id      = aws_subnet.swiggy-pvt-sub-1.id
   route_table_id = aws_route_table.swiggy-app-rt.id
 }
+
+# Route Table Association of App-subnet-2
 resource "aws_route_table_association" "swiggy-rt-as-4" {
   subnet_id      = aws_subnet.swiggy-pvt-sub-2.id
   route_table_id = aws_route_table.swiggy-app-rt.id
 }
 
+# Route Table Association of DB-subnet-1
 resource "aws_route_table_association" "swiggy-rt-as-5" {
   subnet_id      = aws_subnet.swiggy-pvt-sub-3.id
   route_table_id = aws_route_table.swiggy-app-rt.id
 }
+
+# Route Table Association of DB-subnet-2
 resource "aws_route_table_association" "swiggy-rt-as-6" {
   subnet_id      = aws_subnet.swiggy-pvt-sub-4.id
   route_table_id = aws_route_table.swiggy-app-rt.id
